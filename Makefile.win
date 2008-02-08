@@ -1,0 +1,45 @@
+# Project: lsearch
+# Compiler: Default GCC compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ 6.10.2 on 07/02/08 12:50
+
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = windres.exe
+OBJ       = Objects/MingW/lsearchApp.o Objects/MingW/lsearchFrm.o Objects/MingW/procselDlg.o Objects/MingW/mem_util.o Objects/MingW/lsearch_private.res
+LINKOBJ   = Objects/MingW/lsearchApp.o Objects/MingW/lsearchFrm.o Objects/MingW/procselDlg.o Objects/MingW/mem_util.o Objects/MingW/lsearch_private.res
+LIBS      = -mwindows -lwxmsw28 -lwxmsw28_gl -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxregex -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32  
+INCS      = -I"include"
+CXXINCS   = -I"C:/wxDev-Cpp/include" -I"C:/wxDev-Cpp/" -I"C:/wxDev-Cpp/include/common/wx/msw" -I"C:/wxDev-Cpp/include/common/wx/generic" -I"C:/wxDev-Cpp/include/common/wx/html" -I"C:/wxDev-Cpp/include/common/wx/protocol" -I"C:/wxDev-Cpp/include/common/wx/xml" -I"C:/wxDev-Cpp/include/common/wx/xrc" -I"C:/wxDev-Cpp/include/common/wx" -I"C:/wxDev-Cpp/include/common"
+RCINCS    = --include-dir "C:/WXDE~OJ3/include/common"
+BIN       = Output/MingW/lsearch.exe
+DEFINES   =  -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__
+CXXFLAGS  = $(CXXINCS) $(DEFINES) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__   -fexpensive-optimizations -O3
+CFLAGS    = $(INCS) $(DEFINES) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__   -fexpensive-optimizations -O3
+GPROF     = gprof.exe
+RM        = rm -f
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "Output\MingW\lsearch.exe" $(LIBS)
+
+Objects/MingW/lsearchApp.o: $(GLOBALDEPS) lsearchApp.cpp lsearchApp.h lsearchFrm.h procselDlg.h
+	$(CPP) -c lsearchApp.cpp -o Objects/MingW/lsearchApp.o $(CXXFLAGS)
+
+Objects/MingW/lsearchFrm.o: $(GLOBALDEPS) lsearchFrm.cpp lsearchFrm.h procselDlg.h wx_util.h mem_util.h Images/lsearchFrm_WxBitmapButton3_XPM.xpm Images/lsearchFrm_WxBitmapButton2_XPM.xpm Images/lsearchFrm_WxBitmapButton1_XPM.xpm
+	$(CPP) -c lsearchFrm.cpp -o Objects/MingW/lsearchFrm.o $(CXXFLAGS)
+
+Objects/MingW/procselDlg.o: $(GLOBALDEPS) procselDlg.cpp procselDlg.h wx_util.h
+	$(CPP) -c procselDlg.cpp -o Objects/MingW/procselDlg.o $(CXXFLAGS)
+
+Objects/MingW/mem_util.o: $(GLOBALDEPS) mem_util.cpp lsearchFrm.h procselDlg.h mem_util.h
+	$(CPP) -c mem_util.cpp -o Objects/MingW/mem_util.o $(CXXFLAGS)
+
+Objects/MingW/lsearch_private.res: Objects/MingW/lsearch_private.rc lsearchApp.rc 
+	$(WINDRES) --input-format=rc -o Objects/MingW/lsearch_private.res $(RCINCS) Objects/MingW/LSEA~A4D.RC -O coff
