@@ -1,0 +1,34 @@
+#Basic Makefile
+
+CC=g++
+
+WX_CFLAGS= `wx-config --cflags --static=yes` -Wall -W -O1
+WX_LDFLAGS= `wx-config --libs --cflags --static=yes`
+
+all : lsearch
+
+objs = lsearchApp.o lsearchFrm.cpp procselDlg.o mem_util.o wx_util.o
+
+lsearch : $(objs)
+	$(CC) -o lsearch $(objs) $(WX_LDFLAGS)
+
+lsearchApp.o : lsearchApp.cpp lsearchApp.h
+	$(CC) -c lsearchApp.cpp -o lsearchApp.o $(WX_CFLAGS)
+
+lsearchFrm.o : lsearchFrm.cpp lsearchFrm.h
+	$(CC) -c lsearchFrm.cpp -o lsearchFrm.o $(WX_CFLAGS)
+
+procselDlg.o : procselDlg.cpp procselDlg.h
+	$(CC) -c procselDlg.cpp -o procselDlg.o $(WX_CFLAGS)
+
+mem_util.o : mem_util.cpp mem_util.h
+	$(CC) -c mem_util.cpp -o mem_util.o $(WX_CFLAGS)
+
+wx_util.o : wx_util.cpp wx_util.h
+	$(CC) -c wx_util.cpp -o wx_util.o $(WX_CFLAGS)
+
+clean : FORCE
+	rm *.o
+
+FORCE :
+
